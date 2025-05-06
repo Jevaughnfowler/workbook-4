@@ -73,4 +73,15 @@ public class Employee {
         }
     }
 
+    private double punchInTime;
+
+    public void punchIn(double time){
+        this.punchInTime = time;
+    }
+
+    public void punchOut(double punchOutTime){
+
+        this.hoursWorked += (punchOutTime - this.punchInTime);
+
+    }
 }
