@@ -75,7 +75,8 @@ public class Employee {
 
     private double punchInTime;
 
-    public void punchIn(double time){
+    public void punchIn(){
+        double time = 0;
         this.punchInTime = time;
     }
 
