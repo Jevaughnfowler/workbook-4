@@ -6,8 +6,14 @@ public class Hand {
 
     private ArrayList<Card> cards;
 
+
     public Hand(){
         cards = new ArrayList<Card>();
+
+    }
+
+    public ArrayList<Card> getCards(){
+        return this.cards;
     }
 
     public void deal(Card card){

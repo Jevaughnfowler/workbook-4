@@ -1,87 +1,44 @@
 package com.pluralsight;
 
-
-
 public class Main {
-    public static Deck d = new Deck();
+
+    private static Console console = new Console();
 
     public static void main(String[] args) {
-        Console console = new Console();
 
-        System.out.println("***************\n" +
-                "   Welcome   \n" +
-                "***************\n");
+        String firstPlayerName = console.promptForString("Enter the name of the first player: ");
+        String secondPlayerName = console.promptForString("Enter the name of the second player: ");
 
-        int player = 0;
-        do {
-            player = console.promptForInt("Enter number of players \n");
-            if(player > 2){
-                System.out.println("invalid input");  }
-        }while(player != 2);
-
-        console.promptForString("Please Enter your name \n");
-        console.promptForString("Please Enter your name \n");
-        player1();
-        player2();
-
-
-    }
-
-    public static void player1(){
-
+        Deck d = new Deck();
         d.shuffle();
 
-        Hand h1 = new Hand();
+        Player p1 = new Player(firstPlayerName);
+        p1.setHand(new Hand());
 
-        Card c1 = d.deal();
+        Player p2 = new Player(secondPlayerName);
+        p2.setHand(new Hand());
 
-        c1.flip();
 
-        display(c1);
+        // Hand h1 = new Hand(firstPlayerName);
+        //  Hand h2 = new Hand(secondPlayerName);
 
-        System.out.println(c1.getPointValue());
 
-        Card c2 = d.deal();
-        c2.flip();
+        for(int i = 0 ; i < 2 ; i++){
+            Card c;
+            c = d.deal();
+            c.flip();
+            p1.getHand().deal(c);
 
-        display(c2);
-        System.out.println(c2.getPointValue());
+            //h1.deal(d.deal());
+            c = d.deal();
+            c.flip();
+            p2.getHand().deal(c);
+        }
 
-        h1.deal(c1);
-        h1.deal(c2);
-
-        System.out.println();
-        System.out.println(h1.getValue());
-
-    }
-
-    public static void player2(){
-        d.shuffle();
-
-        Hand h1 = new Hand();
-
-        Card c1 = d.deal();
-
-        c1.flip();
-
-        display(c1);
-
-        System.out.println(c1.getPointValue());
-
-        Card c2 = d.deal();
-        c2.flip();
-
-        display(c2);
-        System.out.println(c2.getPointValue());
-
-        h1.deal(c1);
-        h1.deal(c2);
-
-        System.out.println();
-        System.out.println(h1.getValue());
+        display(p1);
+        display(p2);
 
     }
-
 
     public static void display(Card c){
         if(c.getSuit().equalsIgnoreCase("Hearts") || c.getSuit().equalsIgnoreCase("Diamonds") ){
@@ -92,6 +49,16 @@ public class Main {
         }
 
     }
+
+    public static void display(Player player){
+        System.out.println(player.getPlayerName() +" has the follow cards:");
+        for(Card card: player.getHand().getCards()){
+            display(card);
+        }
+        System.out.println("Together they have the value of " + player.getHand().getValue());
+    }
+
+
 
 
 }

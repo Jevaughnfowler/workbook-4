@@ -7,15 +7,15 @@ public class Deck {
 
     private ArrayList<Card> cards;
 
-    public Deck() {
+    public Deck(){
         this.cards = new ArrayList<Card>();
 
-        String[] suits = {"Hearts", "Spades", "Diamonds", "Clubs"};
-        String[] values = {"2", "3", "4", "5", "6", "7", "8",
-                "9", "10", "J", "Q", "K", "A"};
+        String[] suits = {"Hearts","Spades","Diamonds","Clubs"};
+        String[] values = {"2","3","4","5","6","7","8",
+                "9","10","J","Q","K","A"};
 
-        for (String suit : suits) {
-            for (String value : values) {
+        for(String suit: suits){
+            for(String value: values){
                 //create a card.
                 Card c = new Card(suit, value);
 
@@ -25,21 +25,25 @@ public class Deck {
         }
     }
 
-    public void shuffle() {
+    public void shuffle(){
         Collections.shuffle(cards);
     }
 
-    public Card deal() {
-        if (cards.size() > 0) {
+    public Card deal(){
+        if(cards.size() > 0){
             Card c = cards.remove(0);
             return c;
-        } else {
+        }
+        else{
             return null;
         }
     }
 
 
-    public int getSize() {
+    public int getSize(){
         return cards.size();
     }
+
+
+
 }

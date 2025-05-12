@@ -6,7 +6,6 @@ public class Console {
 
     Scanner scanner = new Scanner(System.in);
 
-
     public int promptForInt(String prompt){
         boolean hasResult = false;
         int result = -1;
@@ -26,6 +25,7 @@ public class Console {
         return result;
 
     }
+
 
 
     public String promptForString(String prompt){
